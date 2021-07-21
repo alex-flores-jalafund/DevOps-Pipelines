@@ -36,4 +36,12 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'Drop'
     publishLocation: 'Container'
-  
+    
+- task: AzureFunctionApp@1
+  inputs:
+    azureSubscription: 'Suscripción de Azure 1(614e75a1-bd55-4ade-b0c3-e3246314b59d)'
+    appType: 'functionAppLinux'
+    appName: 'a1ex'
+    deployToSlotOrASE: true
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
